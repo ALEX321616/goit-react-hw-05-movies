@@ -25,13 +25,13 @@ export default function MovieDetailsPage() {
 
   return (
     <>
-      <NavLink to="/movies">Go back</NavLink>
+      <NavLink to={`/movies`}>Go back</NavLink>
       {cardFilm && <CardFilms cardFilm={cardFilm} />}
       <p>
-        <Link to="cast">Cast</Link>
+        <Link to={`cast`}>Cast</Link>
       </p>
       <p>
-        <Link to="reviews">Reviews</Link>
+        <Link to={`reviews`}>Reviews</Link>
       </p>
       <hr color="#321616" />
 
