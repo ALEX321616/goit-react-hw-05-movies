@@ -1,0 +1,11 @@
+.thumb {
+  height: 120px;
+  width: 90px;
+}
+
+.thumb > img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

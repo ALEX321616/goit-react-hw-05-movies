@@ -1,0 +1,18 @@
+.link {
+  text-decoration: none;
+  margin-right: 30px;
+  color: rgb(32, 16, 16);
+}
+
+.list {
+  display: inline-flex;
+  text-decoration: none;
+  margin-right: 30px;
+  list-style: none;
+}
+
+.active {
+  color: rgb(32, 116, 216);
+  text-decoration: none;
+  margin-right: 30px;
+}

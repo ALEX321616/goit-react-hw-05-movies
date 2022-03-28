@@ -1,0 +1,21 @@
+.list {
+  display: block;
+  color: #321616;
+  margin-left: 15px;
+  margin: 10px auto;
+}
+
+.link {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.content {
+  margin-left: 25px;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}

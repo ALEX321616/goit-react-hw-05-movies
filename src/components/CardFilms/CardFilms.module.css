@@ -1,0 +1,26 @@
+.thumb {
+  display: inline-block;
+  height: 300px;
+  width: 200px;
+}
+
+.thumb > img {
+  display: block;
+  height: 100%;
+  width: inherit;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 30px;
+}
+
+.content {
+  margin: 0 20px;
+}
+
+.text {
+  font-size: 14px;
+}
