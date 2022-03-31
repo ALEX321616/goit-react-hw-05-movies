@@ -1,55 +1,43 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { ApiMoviesPage } from 'components/ApiService/ApiService';
+import { useSearchParams, useLocation } from 'react-router-dom';
+import { ApiMoviesPage } from '../ApiService/ApiService';
 import ListMovies from 'components/ListMovies/ListMovies';
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [films, setFilms] = useState([]);
-  const [page, setPage] = useState(1);
   const [searchFilms, setSearchFilms] = useState('');
-
+  const location = useLocation();
   const onSearch = e => {
-    setSearchFilms(e.currentTarget.value);
-    setPage(1);
+    if (searchParams.get('query')) {
+      setSearchParams({});
+    }
     setFilms([]);
-    setSearchParams({});
+    setSearchFilms(e.currentTarget.value);
   };
 
-  const queryMovie = searchParams.toString().trim().toLowerCase();
-
   useEffect(() => {
-    if (queryMovie) {
-      ApiMoviesPage(queryMovie)
-        .then(data => {
-          if (!data.results.length & (page === 1)) {
-            setSearchParams({});
-            setFilms([]);
-            return;
-          }
-          if (data.total_pages !== page) {
-            setPage(prevPage => prevPage + 1);
-          }
-          setFilms(data.results);
-        })
-        .catch(error => {
-          setSearchParams({});
-          setFilms([]);
-          console.log(error);
-        });
+    if (!searchParams.get('query')) {
+      setSearchParams({});
+      setFilms([]);
+      return;
     }
-  }, [searchParams]);
+
+    ApiMoviesPage(searchParams.toString()).then(data => {
+      if (!data.data.results.length) {
+        setSearchParams({});
+        return;
+      }
+      setFilms(data.data.results);
+    });
+  }, [searchParams, setSearchParams]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (searchFilms) {
-      setSearchParams({
-        query: searchFilms.trim().toLowerCase(),
-        page: page,
-      });
-    } else {
-      setSearchParams({});
-    }
+    setSearchParams({});
+    setSearchFilms('');
+    const toFormatString = e.currentTarget.search.value.trim().toLowerCase();
+    setSearchParams({ query: toFormatString, page: 1 });
   };
 
   return (
@@ -63,14 +51,9 @@ export default function MoviesPage() {
           autoComplete="off"
           placeholder="Enter the title"
         />
-        <button type="submit">
-          {(page > 1) & (searchParams.get('page') > 0)
-            ? `Search on page ${searchParams.get('page')}`
-            : 'submit '}
-        </button>
+        <button type="submit">"submit"</button>
+        {films && <ListMovies data={films} state={{ from: location }} />}
       </form>
-
-      {films.length > 0 && <ListMovies data={films} />}
     </>
   );
 }

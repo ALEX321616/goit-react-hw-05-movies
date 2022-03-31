@@ -6,7 +6,7 @@ export function ApiHomePage() {
       `https://api.themoviedb.org/3/trending/movie/day?api_key=1095d1508496987a9fb37d15cac1d329&language=en-US&page=1`
     )
     .then(data => {
-      return data.data;
+      return data;
     });
 }
 
@@ -16,7 +16,7 @@ export function ApiMoviesPage(search) {
       `https://api.themoviedb.org/3/search/movie?api_key=1095d1508496987a9fb37d15cac1d329&${search}`
     )
     .then(data => {
-      return data.data;
+      return data;
     });
 }
 

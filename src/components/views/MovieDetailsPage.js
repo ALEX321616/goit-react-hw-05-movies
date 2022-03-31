@@ -1,4 +1,4 @@
-import { useParams, Route, Routes, Link, NavLink } from 'react-router-dom';
+import { useParams, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ApiMovieDetailsPage } from 'components/ApiService/ApiService';
 import Cast from './Cast';
@@ -8,6 +8,8 @@ import CardFilms from 'components/CardFilms/CardFilms';
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [cardFilm, setCardFilm] = useState(null);
+  const location = useLocation();
+  const fromPath = location.state?.from;
 
   useEffect(() => {
     ApiMovieDetailsPage(movieId).then(data => {
@@ -25,13 +27,17 @@ export default function MovieDetailsPage() {
 
   return (
     <>
-      <NavLink to={`/movies`}>Go back</NavLink>
+      <Link to={`${fromPath}`}>Go back</Link>
       {cardFilm && <CardFilms cardFilm={cardFilm} />}
       <p>
-        <Link to={`cast`}>Cast</Link>
+        <Link to="cast" state={{ from: fromPath }}>
+          Cast
+        </Link>
       </p>
       <p>
-        <Link to={`reviews`}>Reviews</Link>
+        <Link to="reviews" state={{ from: fromPath }}>
+          Reviews
+        </Link>
       </p>
       <hr color="#321616" />
 

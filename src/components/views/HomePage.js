@@ -7,7 +7,7 @@ export default function HomePage() {
 
   useEffect(() => {
     ApiHomePage().then(data => {
-      setMovies(data.results);
+      setMovies(data.data.results);
     });
   }, []);
 
