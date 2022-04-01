@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename="goit-react-hw-05-movies">
     <React.StrictMode>
       <App />
     </React.StrictMode>

@@ -26,5 +26,3 @@ export default function Navigation() {
     </>
   );
 }
-
-// className={({ isActive }) => (isActive ? s.activeLink : s.link)}

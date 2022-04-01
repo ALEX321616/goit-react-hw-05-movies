@@ -1,7 +1,7 @@
 import s from './CastList.module.css';
 import defaultFoto from '../../components/defaultImages/defaultFoto.jpg';
 
-function CastList({ data }) {
+export default function CastList({ data }) {
   return (
     <>
       <ul>
@@ -26,5 +26,3 @@ function CastList({ data }) {
     </>
   );
 }
-
-export default CastList;

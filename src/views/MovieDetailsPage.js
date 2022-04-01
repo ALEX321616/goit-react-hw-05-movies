@@ -1,8 +1,6 @@
-import { useParams, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ApiMovieDetailsPage } from 'components/ApiService/ApiService';
-import Cast from './Cast';
-import Reviews from './Reviews';
 import CardFilms from 'components/CardFilms/CardFilms';
 
 export default function MovieDetailsPage() {
@@ -40,11 +38,7 @@ export default function MovieDetailsPage() {
         </Link>
       </p>
       <hr color="#321616" />
-
-      <Routes>
-        <Route path="cast" element={<Cast />} />
-        <Route path="reviews" element={<Reviews />} />
-      </Routes>
+      <Outlet />
     </>
   );
 }
