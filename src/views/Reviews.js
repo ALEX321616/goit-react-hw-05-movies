@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { ApiReviews } from 'components/ApiService/ApiService';
+import { ApiReviews } from 'ApiService/ApiService';
 import { useState, useEffect } from 'react';
 import ReviewsList from 'components/ReviewsList/ReviewsList';
 

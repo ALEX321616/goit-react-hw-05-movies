@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { ApiMovieCast } from 'components/ApiService/ApiService';
+import { ApiMovieCast } from 'ApiService/ApiService';
 import { useState, useEffect } from 'react';
 import CastList from 'components/CastList/CastList';
 

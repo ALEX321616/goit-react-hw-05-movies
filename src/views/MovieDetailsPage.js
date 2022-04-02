@@ -1,6 +1,6 @@
 import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { ApiMovieDetailsPage } from 'components/ApiService/ApiService';
+import { ApiMovieDetailsPage } from 'ApiService/ApiService';
 import CardFilms from 'components/CardFilms/CardFilms';
 
 export default function MovieDetailsPage() {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import { ApiMoviesPage } from '../components/ApiService/ApiService';
+import { ApiMoviesPage } from '../ApiService/ApiService';
 import ListMovies from 'components/ListMovies/ListMovies';
 
 export default function MoviesPage() {

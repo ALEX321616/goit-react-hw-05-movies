@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ApiHomePage } from 'components/ApiService/ApiService';
+import { ApiHomePage } from 'ApiService/ApiService';
 import ListMovies from '../components/ListMovies/ListMovies';
 
 export default function HomePage() {
