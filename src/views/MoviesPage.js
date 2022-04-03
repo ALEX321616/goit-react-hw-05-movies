@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { ApiMoviesPage } from '../ApiService/ApiService';
 import ListMovies from 'components/ListMovies/ListMovies';
+import { toast } from 'react-toastify';
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [films, setFilms] = useState([]);
   const [searchFilms, setSearchFilms] = useState('');
   const location = useLocation();
+
   const onSearch = e => {
     if (searchParams.get('query')) {
       setSearchParams({});
@@ -25,6 +27,7 @@ export default function MoviesPage() {
 
     ApiMoviesPage(searchParams.toString()).then(data => {
       if (!data.data.results.length) {
+        toast('Movie not found');
         setSearchParams({});
         return;
       }
@@ -37,7 +40,7 @@ export default function MoviesPage() {
     setSearchParams({});
     setSearchFilms('');
     const toFormatString = e.currentTarget.search.value.trim().toLowerCase();
-    setSearchParams({ query: toFormatString, page: 1 });
+    setSearchParams({ query: toFormatString });
   };
 
   return (
@@ -51,7 +54,7 @@ export default function MoviesPage() {
           autoComplete="off"
           placeholder="Enter the title"
         />
-        <button type="submit">"submit"</button>
+        <button type="submit">Submit</button>
         {films && <ListMovies data={films} state={{ from: location }} />}
       </form>
     </>
